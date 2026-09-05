@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 
 
 
@@ -52,8 +55,14 @@ public class PedidoController {
     }
     
     @PostMapping("")
-    public Pedido agregarPedido(@RequestBody @Valid AgregarPedido pedidoParaAgregar) {
-        return pedidoService.agregarPedido(pedidoParaAgregar);
+    public ResponseEntity<Pedido> agregarPedido(
+        @RequestBody @Valid AgregarPedido pedidoParaAgregar) {
+
+        Pedido pedidoCreado = pedidoService.agregarPedido(pedidoParaAgregar);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(pedidoCreado);
     }
     
     @PutMapping("/{id}")
