@@ -30,6 +30,10 @@ public class PedidoService {
         return pedido;
     }
 
+    public long contarPedidos() {
+        return pedidoRepository.count();
+    }
+
     public Pedido agregarPedido(AgregarPedido pedidoParaAgregar){
         Pedido pedidoNuevo = new Pedido();
         pedidoNuevo.setNombre_producto(pedidoParaAgregar.getNombre_producto());
