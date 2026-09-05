@@ -22,20 +22,12 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
-    public List<Pedido> obtenerPedidosPorEstado(String estado) {
-        return pedidoRepository.findByEstado(estado);
-    }
-
     public Pedido obtenerPedidoPorId(Integer id_pedido) {
         Pedido pedido = pedidoRepository.findById(id_pedido).orElse(null);
         if (pedido == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Pedido no encontrado.");
         }
         return pedido;
-    }
-
-    public long contarPedidos() {
-        return pedidoRepository.count();
     }
 
     public Pedido agregarPedido(AgregarPedido pedidoParaAgregar){
