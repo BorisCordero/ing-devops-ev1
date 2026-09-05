@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,16 @@ public class PedidoController {
     @GetMapping("")
     public List<Pedido> obtenerPedidos() {
         return pedidoService.obtenerPedidos();
+    }
+
+    @GetMapping("/estado/{estado}")
+    public List<Pedido> obtenerPedidosPorEstado(@PathVariable String estado) {
+        return pedidoService.obtenerPedidosPorEstado(estado);
+    }
+
+    @GetMapping("/total")
+    public Map<String, Long> obtenerTotalPedidos() {
+        return Map.of("total", pedidoService.contarPedidos());
     }
     
     @GetMapping("/{idPedido}")
