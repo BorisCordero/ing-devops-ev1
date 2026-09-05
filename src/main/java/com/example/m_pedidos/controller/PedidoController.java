@@ -41,7 +41,7 @@ public class PedidoController {
     }
     
     @PostMapping("")
-    public Pedido agregarPedido(@RequestBody AgregarPedido pedidoParaAgregar) {
+    public Pedido agregarPedido(@RequestBody @Valid AgregarPedido pedidoParaAgregar) {
         return pedidoService.agregarPedido(pedidoParaAgregar);
     }
     
