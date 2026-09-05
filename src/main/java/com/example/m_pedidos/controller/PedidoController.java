@@ -36,6 +36,11 @@ public class PedidoController {
         return pedidoService.obtenerPedidos();
     }
 
+    @GetMapping("/estado/{estado}")
+    public List<Pedido> obtenerPedidosPorEstado(@PathVariable String estado) {
+        return pedidoService.obtenerPedidosPorEstado(estado);
+    }
+
     @GetMapping("/total")
     public Map<String, Long> obtenerTotalPedidos() {
         return Map.of("total", pedidoService.contarPedidos());

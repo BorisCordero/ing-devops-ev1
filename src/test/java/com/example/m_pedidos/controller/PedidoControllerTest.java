@@ -23,4 +23,11 @@ class PedidoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.total").isNumber());
     }
+
+    @Test
+    void debeFiltrarPedidosPorEstado() throws Exception {
+        mockMvc.perform(get("/pedidos/estado/PENDIENTE"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
+}
 }

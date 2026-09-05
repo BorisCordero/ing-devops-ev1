@@ -22,6 +22,10 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
+    public List<Pedido> obtenerPedidosPorEstado(String estado) {
+        return pedidoRepository.findByEstado(estado);
+    }
+
     public Pedido obtenerPedidoPorId(Integer id_pedido) {
         Pedido pedido = pedidoRepository.findById(id_pedido).orElse(null);
         if (pedido == null){
